@@ -9,6 +9,6 @@ export * from './users.slice';
 export const store = configureStore({
     reducer: {
         auth: authReducer,
-        users: usersReducer
+        cards: usersReducer
     },
 });

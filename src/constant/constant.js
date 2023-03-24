@@ -1,0 +1,1 @@
+export const BACKEND_URL = "https://interview-api.onrender.com/v1"

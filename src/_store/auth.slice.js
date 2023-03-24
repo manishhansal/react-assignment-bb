@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { history, fetchWrapper } from '_helpers';
+import { BACKEND_URL } from './../constant/constant';
 
 // create slice
 
@@ -39,7 +40,7 @@ function createReducers() {
 }
 
 function createExtraActions() {
-    const baseUrl = `${process.env.REACT_APP_API_URL}/users`;
+    const baseUrl = `${BACKEND_URL}/auth/login`;
 
     return {
         login: login()
@@ -48,7 +49,7 @@ function createExtraActions() {
     function login() {
         return createAsyncThunk(
             `${name}/login`,
-            async ({ username, password }) => await fetchWrapper.post(`${baseUrl}/authenticate`, { username, password })
+            async ({ email, password }) => await fetchWrapper.post(baseUrl, { email, password })
         );
     }
 }
@@ -66,7 +67,7 @@ function createExtraReducers() {
             },
             [fulfilled]: (state, action) => {
                 const user = action.payload;
-                
+                console.log("user",user)
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
                 state.user = user;
