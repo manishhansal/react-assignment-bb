@@ -1,0 +1,18 @@
+.form{
+    width: 500px;
+    display: grid;
+}
+
+.form input{
+    margin:5px;
+    border:1px solid gray;
+    border-radius: 5px;
+    padding:5px;
+}
+
+.form-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

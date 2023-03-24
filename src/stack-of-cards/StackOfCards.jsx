@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CardComponent } from "_components";
 import { userActions } from "_store";
+import "./index.css";
 
 const StackOfCards = () => {
   const dispatch = useDispatch();
@@ -15,25 +16,24 @@ const StackOfCards = () => {
 
   return (
     <div>
-      <h1>Stack of Cards</h1>
+      <h1 style={{ textAlign: "center" }}>Stack of Cards</h1>
       {cards.results && (
-        <ul>
+        <div className="all-cards-container">
           {cards.results?.map((card) => (
-            <li key={card.id}>
-              {card.cardHolder} {card.cardNumber}
-            </li>
+            <div key={card.id}>
+              <CardComponent cardDetails={card} />
+            </div>
           ))}
-        </ul>
+        </div>
       )}
       {cards.loading && (
         <div className="spinner-border spinner-border-sm"></div>
       )}
       {cards.error && (
         <div className="text-danger">
-          Error loading users: {cards.error.message}
+          Error loading cards: {cards.error.message}
         </div>
       )}
-      <CardComponent />
     </div>
   );
 };

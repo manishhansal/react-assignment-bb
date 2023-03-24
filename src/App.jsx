@@ -10,6 +10,8 @@ import { history } from "_helpers";
 import { Nav, PrivateRoute } from "_components";
 import { Home } from "home";
 import { Login } from "login";
+import { StackOfCards } from "stack-of-cards";
+import { NewCard } from "new-card";
 
 export { App };
 
@@ -33,6 +35,8 @@ function App() {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/cards" element={<StackOfCards />} />
+          <Route path="/cards/new" element={<NewCard />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
